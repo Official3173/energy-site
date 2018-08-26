@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+
+<html>
+    <h1 class='title'>Hello! Welcome!</h1>
+
+    {% block content %} 
+    <h2>First Name: {{ name }} </h2>
+    <h2>Age: {{ age }} </h2>
+    
+
+    <a href='/{{ url }}'>link to admin site (generated from backend...)</a>
+
+    {% endblock %}  
+    <br>
+    <a href='/images/math/'>Link to multiplier</a>
+
+
+    <style>
+    .title{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: blueviolet;
+    }
+    
+    </style>
+
+</html>
