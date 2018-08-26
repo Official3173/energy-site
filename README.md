@@ -1,5 +1,1 @@
-# energy-site
-
-This is me playing around with the readme.
-
-This is the code that I added in a seperate branch
+Any importannt instructions we might have for the project should go here.
