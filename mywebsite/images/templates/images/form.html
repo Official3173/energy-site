@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<body>
+
+    <h2>Provide a number to be multiplied by 42,069</h2>
+    <form method="post">
+
+        {% csrf_token %}
+        {{ form }}
+
+        <button type="submit">Submit</button>
+    </form>
+
+
+</body>
+
+
+
+</html>

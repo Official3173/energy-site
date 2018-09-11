@@ -1,8 +1,22 @@
 <!DOCTYPE HTMl>
 
+{% load static %}
+
+
 <html>
 
-    <h2> Your number multiplied by 42069: </h2>
+    <h2> Your number multiplied by 42069: {{ answer }} </h2>
 
+    <img class="img-resize" src ="{% static 'images/Dishwasher/' %}{{ image }}.png">
 
+    <style>
+
+    .img-resize {
+        max-width: 20%;
+        max-height: 20%;
+    }
+    
+    </style>
+
+    
 </html>

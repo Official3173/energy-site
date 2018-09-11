@@ -5,12 +5,10 @@ urlpatterns = [
     #/images/
     url(r'^$', views.index, name='index'),
 
-    #/images/712/ - from detail view
-    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
-    # this convoluted mess is a regular expression - might be worth looking up this notation
+    url(r'^answer/$', views.answer, name='answer'),
 
-    url(r'^math/$', views.math, name='math'),
+    url(r'^form/$', views.form),
 
-    url(r'^answer/$', views.answer, name='answer')
 ]
+
 
