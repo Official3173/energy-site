@@ -2,6 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import User
 from .forms import ContactForm
+from .imageOverlay import ImageOverlay
+
+
+from PIL import Image, ImageDraw, ImageFont
 
 def index(request):
     
@@ -17,16 +21,17 @@ def form(request):
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            name = form.cleaned_data['name']
+            star_rating = form.cleaned_data['star_rating']
+            kwh = form.cleaned_data['kwh']
+            model_num = form.cleaned_data['model_num']
 
-            try:
-                name = int(name) * 42069
-                return render(request, 'images/answer.html', {'answer':name, 'image': '0.5 Stars Final Template' })
 
-            except:
-                print('\n' + 'Invalid number entered by user - error page to be displayed' + '\n')
-                return HttpResponse('<h1> OWO, looks like u made an oopsie woopsie fucky wucky - make sure you entered an actual number </h1>')
+            image = ImageOverlay(star_rating, model_num, kwh)
+            image.generate_image()
 
+            img_id = image.get_unique_img_id()
+
+            return render(request, 'images/answer.html', {'image': img_id } )
             
 
     form = ContactForm()
