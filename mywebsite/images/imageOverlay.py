@@ -1,4 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
+import uuid
 
 
 class ImageOverlay():
@@ -75,8 +76,9 @@ class ImageOverlay():
         #d2.text((538, 1600), 'big ol pp capacity 25kg',  font = fnt1, fill=(241, 92, 48) )
         d3.text((538 - d3_text_midpoint, 1120), self.kwh,               font = fnt3, fill=(255, 255, 255))
 
-        # Unique id to be stored for each image
-        self.final_img_id = 'img123'
+        uniq_id = str(uuid.uuid4())
+        self.final_img_id = uniq_id[0:8]
+        
 
 
         #saves image to filepath, with unique id as image name
@@ -84,7 +86,10 @@ class ImageOverlay():
 
 
     def get_unique_img_id(self):
-        return self.final_img_id + '.png'
+        '''
+        Returns the unique image id.
+        '''
+        return self.final_img_id
 
         
 '''
