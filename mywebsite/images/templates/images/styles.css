@@ -1,0 +1,55 @@
+
+body {
+    height:120vh;
+    background-image:
+    linear-gradient( #076585, #6dc3e0)
+}
+
+.welcome-text-header {
+    color: #ffffff;
+    font-size: 5em;
+}
+
+.welcome-text {
+    color: #ffffff;
+    font-size:20pt;
+    margin-bottom: auto;
+}
+
+.hero-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    max-width: 17%;
+    max-height: 17%;
+}
+
+.lower-text {
+    margin-top: 10px;
+    color: #ffff;
+    font-size: 9pt;
+}
+
+.form-image {
+    display: inline-block;
+    float: right;
+    margin-right: 40px;
+    max-height: 800px;
+}
+
+.form {
+    float: left;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.form-wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%; 
+    margin-top: 5vh;
+}
+
+.form-field {
+   margin-left: 15px;
+}
