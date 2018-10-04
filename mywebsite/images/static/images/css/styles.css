@@ -1,0 +1,115 @@
+
+body {
+    height:120vh;
+    background-image:
+    linear-gradient( #076585, #6dc3e0)
+}
+
+.welcome-text-header {
+    color: #ffffff;
+    font-size: 5em;
+}
+
+.welcome-text {
+    color: #ffffff;
+    font-size:20pt;
+    margin-bottom: auto;
+}
+
+.hero-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    max-width: 15%;
+    max-height: 15%;
+}
+
+.lower-text {
+    margin-top: 10px;
+    color: #ffff;
+    font-size: 9pt;
+}
+
+.form-image {
+    display: inline-block;
+    float: right;
+    margin-right: 40px;
+    max-height: 800px;
+}
+
+.form {
+    float: left;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+
+.form-centered {
+    float: left;
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+}
+
+.form-wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%; 
+    margin-top: 5vh;
+}
+
+.form-field {
+   margin-left: 15px;
+}
+
+.signup-wrapper {
+    display: grid;
+    grid-template-columns: 35% 30% 35%;
+}
+
+.signup-blank {
+    display: inline-block;
+}
+.center-div {
+    display: grid;
+    padding: none;
+}
+.center {
+    display: inline-block;
+    margin: auto;
+}
+
+.signup-text {
+    display: inline-block;
+    margin: auto;
+    margin-top: 15vh;
+    margin-bottom: 2vh;
+    color: white;
+}
+
+.signup-btn {
+    margin-left: 0;
+    background-color: red;
+}
+
+.hidden {
+    display: none;
+}
+
+.signup-background {
+    height:100vh;
+    background-image:
+    linear-gradient( #076585, #6dc3e0)
+}
+
+.password-message {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.white-override {
+    color: white !important
+}
+
+

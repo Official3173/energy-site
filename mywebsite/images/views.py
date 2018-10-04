@@ -8,9 +8,7 @@ from .imageOverlay import ImageOverlay
 from PIL import Image, ImageDraw, ImageFont
 
 def index(request):
-    
-    my_info = { 'name': 'Mitchell', 'age': '28', 'url': 'admin/'}
-    return render(request, 'images/index.html', my_info)
+    return render(request, 'images/homepage.html')
 
 def answer(request):
     return render(request, 'images/answer.html')
@@ -35,8 +33,10 @@ def form(request):
             
 
     form = ContactForm()
-    return render(request, 'images/form.html', {'form': form})
+    return render(request, 'images/nice_form.html', {'form': form})
 
+def sign_in (request):
+    return render(request, 'images/sign in.html')
 
 
 

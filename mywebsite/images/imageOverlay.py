@@ -46,18 +46,18 @@ class ImageOverlay():
             self.image_template_id = '5 Stars Final Template'
 
         # Opens the image from the correct directory
-        img = Image.open('/home/mitchell/Desktop/energy-site-master/mywebsite/images/static/images/Dishwasher/' + self.image_template_id + '.png')
+        img = Image.open('images/static/images/Dishwasher/' + self.image_template_id + '.png')
 
-        #aragon sans bold
-        #replaces "<Clothes Dryer Model>" & "<Load capacity xx kg"
-        fnt1 = ImageFont.truetype('/home/mitchell/Desktop/energy-site-master/mywebsite/images/OpenSans-Regular.ttf', 42)
+        # Changed from full path to windows path - shortened version should work on Ubuntu as well
 
-        #this font looks incorrect
-        #replaces "xxx"
-        fnt3 = ImageFont.truetype('/home/mitchell/Desktop/energy-site-master/mywebsite/images/OpenSans-Regular.ttf', 105)
+
+        fnt1 = ImageFont.truetype('images/OpenSans-Regular.ttf', 42)
+
+        
+        fnt3 = ImageFont.truetype('images/OpenSans-Regular.ttf', 105)
 
         #replaces "<program name> used once per week"
-        fnt4 = ImageFont.truetype('/home/mitchell/Desktop/energy-site-master/mywebsite/images/OpenSans-Regular.ttf', 18)
+        fnt4 = ImageFont.truetype('images/OpenSans-Regular.ttf', 18)
 
         d1 = ImageDraw.Draw(img)
         d2 = ImageDraw.Draw(img)
@@ -70,10 +70,11 @@ class ImageOverlay():
         d1_text_size = d1.textsize(self.model_num, font=fnt1 )
         d1_text_midpoint = d1_text_size[0] / 2
 
-        #COLORS: ORANGE fill = (241, 92, 48); WHITE fill = (255, 255, 255)
 
+        # Overlays Model
         d1.text((538 - d1_text_midpoint , 1340), self.model_num,        font = fnt1, fill=(241, 92, 48))
-        #d2.text((538, 1600), 'big ol pp capacity 25kg',  font = fnt1, fill=(241, 92, 48) )
+        
+        # Overlays KWH in center of image, with white color text.
         d3.text((538 - d3_text_midpoint, 1120), self.kwh,               font = fnt3, fill=(255, 255, 255))
 
         uniq_id = str(uuid.uuid4())
@@ -82,7 +83,7 @@ class ImageOverlay():
 
 
         #saves image to filepath, with unique id as image name
-        img.save('/home/mitchell/Desktop/energy-site-master/mywebsite/images/static/images/' + self.final_img_id + '.png')
+        img.save('images/static/images/temp/' + self.final_img_id + '.png')
 
 
     def get_unique_img_id(self):

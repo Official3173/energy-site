@@ -1,5 +1,5 @@
 import os
 
-for file in os.listdir('/home/mitchell/Desktop/energy-site-master/mywebsite/images/static/images/temp'):
+for file in os.listdir('.'):
     if file.endswith('.png'):
         os.remove(file)

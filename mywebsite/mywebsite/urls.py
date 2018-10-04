@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from images import views
 
 # include imports other urls.py files from other django apps, can be called below
 # as include("app_name".urls)
@@ -22,4 +23,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^images/', include('images.urls')),
+    
 ]
