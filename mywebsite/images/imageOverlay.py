@@ -53,8 +53,7 @@ class ImageOverlay():
 
         fnt1 = ImageFont.truetype('images/OpenSans-Regular.ttf', 42)
 
-        
-        fnt3 = ImageFont.truetype('images/OpenSans-Regular.ttf', 105)
+        kWh_font = ImageFont.truetype('images/OpenSans-Regular.ttf', 105)
 
         #replaces "<program name> used once per week"
         fnt4 = ImageFont.truetype('images/OpenSans-Regular.ttf', 18)
@@ -64,19 +63,21 @@ class ImageOverlay():
         d3 = ImageDraw.Draw(img)
         d4 = ImageDraw.Draw(img)
 
-        d3_text_size = d3.textsize(self.kwh, font=fnt3)
+        d3_text_size = d3.textsize(self.kwh, font=kWh_font)
         d3_text_midpoint = d3_text_size[0] / 2
 
         d1_text_size = d1.textsize(self.model_num, font=fnt1 )
         d1_text_midpoint = d1_text_size[0] / 2
 
 
-        # Overlays Model
-        d1.text((538 - d1_text_midpoint , 1340), self.model_num,        font = fnt1, fill=(241, 92, 48))
-        
+        # Overlays Model Number, with orange text.
+        d1.text((538 - d1_text_midpoint , 980), self.model_num,        font = fnt1, fill=(241, 92, 48))
         # Overlays KWH in center of image, with white color text.
-        d3.text((538 - d3_text_midpoint, 1120), self.kwh,               font = fnt3, fill=(255, 255, 255))
+        d3.text((538 - d3_text_midpoint, 1120), self.kwh,               font = kWh_font, fill=(255, 255, 255))
 
+
+
+        # Generates unique ID for each image, so they don't save over each other.
         uniq_id = str(uuid.uuid4())
         self.final_img_id = uniq_id[0:8]
         
