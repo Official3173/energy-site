@@ -1,4 +1,4 @@
-Any importannt instructions we might have for the project should go here.
+Any important instructions we might have for the project should go here.
 
 Project contributors:
 Official3173
