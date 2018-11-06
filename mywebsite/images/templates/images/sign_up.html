@@ -1,0 +1,92 @@
+<!doctype HTML>
+
+{% load static %}
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="{% static 'images/css/styles.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+
+<body class="signup-background">
+
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link active white-override" onclick="returnToHomepage()" style="cursor:pointer;">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link white-override" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link white-override" href="">Sign Up</a>
+            </li>
+        </ul>
+
+    <div class="container-fluid signup-wrapper">
+        <div class="signup-blank"></div>
+
+        <div class="center-div">   
+            <h1 class="signup-text">Sign Up</h1>
+            <form class="form-centered">
+        
+                <div class="form-group col-12">
+                    <label>Email</label>
+                    <input type="text" class="form-control">
+                </div>
+                
+                <div class="form-group col-12">
+                    <label>Password</label>
+                    <input name="inputPassword1" type="password" class="form-control" id="password1">
+                </div>
+
+                <div class="form-group col-12">
+                    <label>Confirm Password</label>
+                    <input name="inputPassword1" type="password" class="form-control" id="password2">
+                </div>
+                
+                <div class="container-fluid">
+                    <p id="message" class="password-message"></p>
+                </div>
+
+                <div class="container-fluid center-div">
+                    <button type="button" class="signup-btn btn btn-danger form-field" onclick="submitUser();">Sign Up</button>
+                </div>  
+            </form>
+        </div>
+
+        <div class="signup-blank"></div>
+
+    </div>
+</body>
+
+
+<script>
+function returnToHomepage() {
+    var url = '/images/';
+    window.location = url;
+};
+
+
+
+// Checks to see if the password and confirm password are the same, displays an error if not.
+function submitUser() {
+     var password1 = document.getElementById("password1").value;
+     var password2 = document.getElementById("password2").value;
+     console.log(password1 + ' ' + password2);
+
+    if (password1 == password2) {
+        document.getElementById("message").innerHTML = '';
+        console.log('Our passwords match!');
+    } else {
+        document.getElementById("message").innerHTML = 'Passwords do not match.';
+        console.log('Our passwords do not match, or are empty.');
+    }
+}
+
+</script>
+
+
+</html>

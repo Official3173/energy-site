@@ -10,7 +10,9 @@ urlpatterns = [
 
     url(r'^form/$', views.form),
 
-    url(r'^sign_in/$', views.sign_in)
+    url(r'^sign_in/$', views.sign_in),
+
+    url(r'^sign_up/$', views.sign_up),
 
 ]
 

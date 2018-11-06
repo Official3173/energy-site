@@ -10,4 +10,4 @@ class User(models.Model):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
     # prints out a string with the first name and last name in the manage.py shell
-    # with first name and last name displayed
+    # with first name and last name displayed 

@@ -36,7 +36,10 @@ def form(request):
     return render(request, 'images/nice_form.html', {'form': form})
 
 def sign_in (request):
-    return render(request, 'images/sign in.html')
+    return render(request, 'images/sign in.html') 
+
+def sign_up (request):
+    return render(request, 'images/sign_up.html')
 
 
 

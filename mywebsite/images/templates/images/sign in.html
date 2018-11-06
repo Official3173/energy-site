@@ -39,15 +39,21 @@
                 
                 <div class="form-group col-12">
                     <label>Password</label>
-                    <input name="inputPassword1" type="password" class="form-control" id="inputPassword1">
+                    <input type="password" class="form-control" id="inputPassword1">
                 </div>
                 
                 <span id="message" class="password-message"></span>
 
                 <div class="container-fluid center-div">
                     <button type="button" class="signup-btn btn btn-danger form-field" onclick="">Sign In</button>
-                </div>  
+                </div>
+
             </form>
+            <p class="text-center" style="padding-top: 10px;"> Don't have an account yet?</p>
+            <div class="container-fluid center-div">
+                    <button class="signup-btn btn btn-primary" onclick= "goToSignUp();" >Sign Up</button>
+                </div>
+
         </div>
 
         <div class="signup-blank"></div>
@@ -58,10 +64,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script>
+console.log('Javascript loaded!')
+
 function returnToHomepage() {
     var url = '/images/';
     window.location = url;
-}
+};
+
+function goToSignUp () {
+    var url = '/images/sign_up';
+    window.location = url;
+    console.log('why the fuck am I not working?')
+};
+
 </script>
 
 
