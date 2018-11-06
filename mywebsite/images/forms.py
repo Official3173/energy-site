@@ -22,7 +22,7 @@ class ContactForm(forms.Form):
 
 class SignUpForm(forms.Form):
     email = forms.CharField(label='Email', widget=forms.TextInput(attrs={'class' : 'form-control'}))
-    password = forms.CharField(label='Password', widget=forms.TextInput(attrs={'class' : 'form-control'}))
-    confirm_password = forms.CharField(label='Confirm Password', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class' : 'form-control'}))
+    confirm_password = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     
     

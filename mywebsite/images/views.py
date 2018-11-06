@@ -40,7 +40,7 @@ def sign_in (request):
 
 def sign_up (request):
     sign_up_form = SignUpForm()
-    return render(request, 'images/sign_up.html', {'sign_up_form': sign_up_form })
+    return render(request, 'images/sign_up.html', {'sign_up_form': sign_up_form } )
 
 
 

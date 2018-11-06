@@ -71,26 +71,26 @@
 
 
 <script>
+// Returns to hompage, called in the navbar.
 function returnToHomepage() {
     var url = '/images/';
     window.location = url;
 };
-
-
 
 // Checks to see if the password and confirm password are the same, displays an error if not.
 function submitUser() {
      var password1 = document.getElementById("id_password").value;
      var password2 = document.getElementById("id_confirm_password").value;
 
-    if (password1 == password2) {
+    if ((password1 == '') || (password2 == '')) {
+        document.getElementById("message").innerHTML = 'Please fill out both password fields.';
+    }
+    else if (password1 == password2) {
         document.getElementById("message").innerHTML = '';
         console.log('Our passwords match!');
         document.getElementById("signup-button").submit()
-
     } else {
         document.getElementById("message").innerHTML = 'Passwords do not match.';
-        console.log('Our passwords do not match, or are empty.');
     }
 }
 
