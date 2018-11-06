@@ -18,5 +18,11 @@ class ContactForm(forms.Form):
     star_rating = forms.CharField(label='Star Rating', widget=forms.Select(choices=IMAGE_CHOICES))
     kwh = forms.CharField(label='kWh')
     model_num = forms.CharField(label='Model Number')
+
+
+class SignUpForm(forms.Form):
+    email = forms.CharField(label='Email', widget=forms.TextInput(attrs={'class' : 'form-control'}))
+    password = forms.CharField(label='Password', widget=forms.TextInput(attrs={'class' : 'form-control'}))
+    confirm_password = forms.CharField(label='Confirm Password', widget=forms.TextInput(attrs={'class': 'form-control'}))
     
     

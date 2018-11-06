@@ -30,31 +30,38 @@
 
         <div class="center-div">   
             <h1 class="signup-text">Sign Up</h1>
-            <form class="form-centered">
-        
-                <div class="form-group col-12">
-                    <label>Email</label>
-                    <input type="text" class="form-control">
-                </div>
-                
-                <div class="form-group col-12">
-                    <label>Password</label>
-                    <input name="inputPassword1" type="password" class="form-control" id="password1">
-                </div>
 
-                <div class="form-group col-12">
-                    <label>Confirm Password</label>
-                    <input name="inputPassword1" type="password" class="form-control" id="password2">
-                </div>
-                
-                <div class="container-fluid">
-                    <p id="message" class="password-message"></p>
-                </div>
+            
+            <form class="form-centered">
+                {% csrf_token %}
+            
+            <div class="form-group col-12">
+                {{ sign_up_form.email.label }}
+                {{ sign_up_form.email }}
+            </div>
+
+            <div class="form-group col-12">
+                {{ sign_up_form.password.label }}
+                {{ sign_up_form.password }}
+            </div>
+
+            <div class="form-group col-12">
+                {{ sign_up_form.confirm_password.label }}
+                {{ sign_up_form.confirm_password }}
+            </div>
+            
+
+            <div class="container-fluid">
+                <p id="message" class="password-message"></p>
+            </div>
 
                 <div class="container-fluid center-div">
-                    <button type="button" class="signup-btn btn btn-danger form-field" onclick="submitUser();">Sign Up</button>
+                    <button type="button" id="signup-button" class="signup-btn btn btn-danger form-field" onclick="submitUser();">Sign Up</button>
                 </div>  
+            
             </form>
+
+
         </div>
 
         <div class="signup-blank"></div>
@@ -73,13 +80,14 @@ function returnToHomepage() {
 
 // Checks to see if the password and confirm password are the same, displays an error if not.
 function submitUser() {
-     var password1 = document.getElementById("password1").value;
-     var password2 = document.getElementById("password2").value;
-     console.log(password1 + ' ' + password2);
+     var password1 = document.getElementById("id_password").value;
+     var password2 = document.getElementById("id_confirm_password").value;
 
     if (password1 == password2) {
         document.getElementById("message").innerHTML = '';
         console.log('Our passwords match!');
+        document.getElementById("signup-button").submit()
+
     } else {
         document.getElementById("message").innerHTML = 'Passwords do not match.';
         console.log('Our passwords do not match, or are empty.');

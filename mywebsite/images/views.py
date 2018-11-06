@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import User
-from .forms import ContactForm
+from .forms import ContactForm, SignUpForm
 from .imageOverlay import ImageOverlay
 
 
@@ -32,14 +32,15 @@ def form(request):
             return render(request, 'images/answer.html', {'image': img_id } )
             
 
-    form = ContactForm()
-    return render(request, 'images/nice_form.html', {'form': form})
+    contact_form = ContactForm()
+    return render(request, 'images/nice_form.html', {'form': contact_form})
 
 def sign_in (request):
     return render(request, 'images/sign in.html') 
 
 def sign_up (request):
-    return render(request, 'images/sign_up.html')
+    sign_up_form = SignUpForm()
+    return render(request, 'images/sign_up.html', {'sign_up_form': sign_up_form })
 
 
 
