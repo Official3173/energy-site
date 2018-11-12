@@ -28,6 +28,10 @@ class SignUpForm(forms.Form):
     first_name = forms.CharField(label='First Name', widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(label='First Name', widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+class SignInForm(forms.Form):
+     username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'form-control'}))
+     password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     
 
 
