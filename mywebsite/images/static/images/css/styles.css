@@ -111,7 +111,7 @@
 
 
 .responsive-gradient {
-    height: 100%;
+    height: 100vh;
     background-image:
     linear-gradient( #076585, #6dc3e0);
     
