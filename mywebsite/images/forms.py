@@ -1,6 +1,9 @@
 
 from django import forms
 
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
 IMAGE_CHOICES = [
     ('0.5', '0.5'),
     ('1', '1'),
@@ -19,10 +22,17 @@ class ContactForm(forms.Form):
     kwh = forms.CharField(label='kWh')
     model_num = forms.CharField(label='Model Number')
 
+class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 
-class SignUpForm(forms.Form):
-    email = forms.CharField(label='Email', widget=forms.TextInput(attrs={'class' : 'form-control'}))
-    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class' : 'form-control'}))
-    confirm_password = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+
+
+
+
     
     
