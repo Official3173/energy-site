@@ -6,15 +6,17 @@ from .imageOverlay import ImageOverlay
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+# No comments, no fuckin problems.
 
+# Seriously though, I should document this.
 
 from PIL import Image, ImageDraw, ImageFont
 
 def index(request):
 
     if request.user.is_authenticated:
-        username = request.user.first_name
-    return render(request, 'images/homepage.html', {'js_username': username})
+        first_name = request.user.first_name
+    return render(request, 'images/homepage.html', {'first_name': first_name})
 
 def answer(request):
     return render(request, 'images/answer.html')
@@ -60,6 +62,8 @@ def sign_in (request):
     
     form = SignInForm()
     return render(request, 'images/sign in.html', {'form': form }) 
+
+
 
 def sign_up (request):
 
