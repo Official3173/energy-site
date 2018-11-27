@@ -14,9 +14,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 def index(request):
 
-    if request.user.is_authenticated:
-        first_name = request.user.first_name
-    return render(request, 'images/homepage.html', {'first_name': first_name})
+    # if request.user.is_authenticated:
+    return render(request, 'images/homepage.html')
 
 def answer(request):
     return render(request, 'images/answer.html')
@@ -55,7 +54,7 @@ def sign_in (request):
 
             if user is not None:
                 login(request, user)
-                return redirect('/images' )
+                return redirect('images')
 
             else:
                 return HttpResponse('<h1>Mission Failed!</h1>')

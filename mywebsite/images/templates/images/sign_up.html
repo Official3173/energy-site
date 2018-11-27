@@ -31,17 +31,19 @@
         <div class="center-div">   
             <h1 class="signup-text">Sign Up</h1>
 
-            
             <form class="form-centered" method="POST">
-                {% csrf_token %}
+                    {% csrf_token %}
+
+<!-- Just gonna leave a reminder - these {{ form.username.label }} guys need to be SPOT
+ON ACCURATE, otherwise the data will not go in the database and no error will be returned. -->
 
                 <div class="form-group col-12">
-                {{ form.username.label}}
-                {{ form.username }}
+                    {{ form.username.label}}
+                    {{ form.username }}
                 </div>
 
                 <div class="form-group col-12">
-                    {{ form.email.label}}
+                    {{ form.email.label }}
                     {{ form.email }}
                 </div>
 
@@ -52,21 +54,20 @@
 
                 <div class="form-group col-12">
                     {{ form.last_name.label}}
-                    {{ form.email }}
+                    {{ form.last_name }}
                 </div>
 
                 <div class="form-group col-12">
-                    {{ form.password.label}}
+                    {{ form.password.label }}
                     {{ form.password }}
                 </div>
-
 
             <div class="container-fluid">
                 <p id="message" class="password-message"></p>
             </div>
 
                 <div class="container-fluid center-div">
-                    <button type="submit" id="signup-button" class="signup-btn btn btn-danger form-field">Sign Up</button>
+                    <button type="submit" class="signup-btn btn btn-danger form-field">Sign Up</button>
                 </div>  
             
             </form>
