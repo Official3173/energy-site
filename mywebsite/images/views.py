@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 # No comments, no fuckin problems.
-
 # Seriously though, I should document this.
 
 from PIL import Image, ImageDraw, ImageFont
@@ -29,9 +28,10 @@ def form(request):
             star_rating = form.cleaned_data['star_rating']
             kwh = form.cleaned_data['kwh']
             model_num = form.cleaned_data['model_num']
+            primary = form.cleaned_data['primary']
+            secondary = form.cleaned_data['secondary']
 
-
-            image = ImageOverlay(star_rating, model_num, kwh)
+            image = ImageOverlay(star_rating, model_num, kwh, primary, secondary)
             image.generate_image()
 
             img_id = image.get_unique_img_id()
@@ -45,24 +45,34 @@ def form(request):
 def sign_in (request):
 
     if request.method == 'POST':
+
+        # request.POST is the users info they put in the HTML form, so this populates our
+        # form class with their data passed in as a parameter.
         form = SignInForm(request.POST)
+
+        # Runs checks on the form data to make sure it's valid (I think this is like that it's not blank,
+        # or has invalid characters? I'm not really sure.)
         if form.is_valid():
+            # request.POST[''] retrieves that supplied value from the submitted form.
             username = request.POST['username']
             password = request.POST['password']
 
             user = authenticate(request, username=username, password=password)
 
+            # Confirms that user exists in the database.
             if user is not None:
                 login(request, user)
+
+                # Redirects to the root page of the images app, which is the homepage.
                 return redirect('images')
 
             else:
                 return HttpResponse('<h1>Mission Failed!</h1>')
     
+    # Renders the template with the form data - it looks weird being at the bottom down here,
+    # but this is where it's supposed to be.
     form = SignInForm()
     return render(request, 'images/sign in.html', {'form': form }) 
-
-
 
 def sign_up (request):
 

@@ -17,10 +17,19 @@ IMAGE_CHOICES = [
     ('5', '5'),            
 ]
 
+TEMP_CHOICES = [
+    ('Hot', 'Hot'),
+    ('Cold', 'Cold')
+]
+
 class ContactForm(forms.Form):
     star_rating = forms.CharField(label='Star Rating', widget=forms.Select(choices=IMAGE_CHOICES))
     kwh = forms.CharField(label='kWh')
     model_num = forms.CharField(label='Model Number')
+    primary = forms.CharField(label='Primary Water Connection', widget=forms.Select(choices=[('Hot', 'Hot'),
+    ('Cold', 'Cold')]))
+    secondary = forms.CharField(label='Secondary Water Connection', widget=forms.Select(choices=[('Cold', 'Cold'),
+    ('Hot', 'Hot')]))
 
 class SignUpForm(forms.Form):
     username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'form-control'}))

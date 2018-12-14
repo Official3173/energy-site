@@ -12,12 +12,13 @@ import sys
 
 from django.core.wsgi import get_wsgi_application
 
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath('mywebsite')))
 sys.path.append(BASE_DIR)
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'mywebsite.settings'
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mywebsite.settings")
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mywebsite.settings")
 
 application = get_wsgi_application()
 
