@@ -28,8 +28,8 @@ class ContactForm(forms.Form):
     model_num = forms.CharField(label='Model Number')
     primary = forms.CharField(label='Primary Water Connection', widget=forms.Select(choices=[('Hot', 'Hot'),
     ('Cold', 'Cold')]))
-    secondary = forms.CharField(label='Secondary Water Connection', widget=forms.Select(choices=[('Cold', 'Cold'),
-    ('Hot', 'Hot')]))
+    secondary = forms.CharField(label='Supplementary Water Connection', widget=forms.Select(choices=[('cold', 'Cold'),
+    ('hot', 'Hot')]))
 
 class SignUpForm(forms.Form):
     username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'form-control'}))
