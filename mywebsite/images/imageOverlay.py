@@ -32,7 +32,7 @@ class ImageOverlay():
 
         fnt1 = ImageFont.truetype('images/OpenSans-Regular.ttf', 42)
         kWh_font = ImageFont.truetype('images/OpenSans-Regular.ttf', 105)
-        fnt4 = ImageFont.truetype('images/OpenSans-Regular.ttf', 18)
+        kwh_font_small = ImageFont.truetype('images/OpenSans-SemiBold.ttf', 34)
 
         # Initializes all the layers we're overlaying (I think?)
         d1 = ImageDraw.Draw(img)
@@ -49,11 +49,12 @@ class ImageOverlay():
         d1_text_size = d1.textsize(self.model_num, font=fnt1 )
         d1_text_midpoint = d1_text_size[0] / 2
 
-
         # Overlays Model Number, with orange text.
         d1.text((538 - d1_text_midpoint , 980), self.model_num, font = fnt1, fill=(241, 92, 48))
         # Overlays KWH in center of image, with white color text.
         d3.text((538 - d3_text_midpoint, 1120), self.kwh,       font = kWh_font, fill=(255, 255, 255))
+
+        d4.text((505, 1555), self.kwh, font=kwh_font_small, fill=(241, 92, 48))
 
         # Generates unique ID for each image, so they don't save over each other.
         uniq_id = str(uuid.uuid4())
