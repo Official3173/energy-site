@@ -28,43 +28,48 @@
     <div class="container-fluid signup-wrapper">
         <div class="signup-blank"></div>
 
-        <div class="center-div">   
+        <div class="center-div">
             <h1 class="signup-text">Sign Up</h1>
 
-            
             <form class="form-centered" method="POST">
-                {% csrf_token %}
-                
-                {{ form }}
-                <!-- {{ form.email.label }}
-                {{ form.email }}  THIS WORKS !!!!!!!!!!!!!!!!!!!!!! -->
-            
-                <!--
-            <div class="form-group col-12">
-                {{ form.email.label }}
-                {{ form.email }}
-            </div>
+                    {% csrf_token %}
 
-            <div class="form-group col-12">
-                {{ form.password.label }}
-                {{ form.password }}
-            </div>
-            <!--
-            <div class="form-group col-12">
-                <label>Confirm Password</label>
-                <input type="password" class="form-control" id="id_confirm_password">
-            </div>
-        -->
-            
+<!-- Just gonna leave a reminder - these {{ form.username.label }} guys need to be SPOT
+ON ACCURATE, otherwise the data will not go in the database and no error will be returned. -->
+
+                <div class="form-group col-12">
+                    {{ form.username.label}}
+                    {{ form.username }}
+                </div>
+
+                <div class="form-group col-12">
+                    {{ form.email.label }}
+                    {{ form.email }}
+                </div>
+
+                <div class="form-group col-12">
+                    {{ form.first_name.label}}
+                    {{ form.first_name }}
+                </div>
+
+                <div class="form-group col-12">
+                    {{ form.last_name.label}}
+                    {{ form.last_name }}
+                </div>
+
+                <div class="form-group col-12">
+                    {{ form.password.label }}
+                    {{ form.password }}
+                </div>
 
             <div class="container-fluid">
                 <p id="message" class="password-message"></p>
             </div>
 
                 <div class="container-fluid center-div">
-                    <button type="submit" id="signup-button" class="signup-btn btn btn-danger form-field">Sign Up</button>
-                </div>  
-            
+                    <button type="submit" class="signup-btn btn btn-danger form-field">Sign Up</button>
+                </div>
+
             </form>
 
 

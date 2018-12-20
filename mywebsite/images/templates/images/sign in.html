@@ -30,25 +30,26 @@
 
         <div class="center-div">   
             <h1 class="signup-text">Sign In</h1>
-            <form class="form-centered">
-        
-                <div class="form-group col-12">
-                    <label>Email</label>
-                    <input type="text" class="form-control">
-                </div>
+            <form class="form-centered" method="POST">
+
+                {% csrf_token %}
                 
                 <div class="form-group col-12">
-                    <label>Password</label>
-                    <input type="password" class="form-control" id="inputPassword1">
+                    {{ form.username.label }}
+                    {{ form.username }}
                 </div>
-                
-                <span id="message" class="password-message"></span>
+
+                <div class="form-group col-12">
+                    {{ form.password.label }}
+                    {{ form.password }}
+                </div>
 
                 <div class="container-fluid center-div">
-                    <button type="button" class="signup-btn btn btn-danger form-field" onclick="">Sign In</button>
+                    <button type="submit" class="signup-btn btn btn-danger">Sign In</button>
                 </div>
-
             </form>
+            
+            
             <p class="text-center" style="padding-top: 10px;"> Don't have an account yet?</p>
             <div class="container-fluid center-div">
                     <button class="signup-btn btn btn-primary" onclick= "goToSignUp();" >Sign Up</button>

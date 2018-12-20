@@ -1,16 +1,20 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from .forms import ContactForm, SignUpForm
+from .forms import ContactForm, SignUpForm, SignInForm
 from django.contrib.auth import authenticate, login
 from .imageOverlay import ImageOverlay
-#from .models import UserForm
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
+# No comments, no fuckin problems.
 
+# Seriously though, I should document this.
 
 from PIL import Image, ImageDraw, ImageFont
 
 def index(request):
+
+    # if request.user.is_authenticated:
     return render(request, 'images/homepage.html')
 
 def answer(request):
@@ -39,59 +43,47 @@ def form(request):
     return render(request, 'images/nice_form.html', {'form': contact_form})
 
 def sign_in (request):
-    
 
-    return render(request, 'images/sign in.html') 
+    if request.method == 'POST':
+        form = SignInForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('images')
+
+            else:
+                return HttpResponse('<h1>Mission Failed!</h1>')
+    
+    form = SignInForm()
+    return render(request, 'images/sign in.html', {'form': form }) 
+
+
 
 def sign_up (request):
 
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('/images/')
-    else:
-        form = SignUpForm()
+           username = form.cleaned_data['username']
+           email = form.cleaned_data['email']
+           first_name = form.cleaned_data['first_name']
+           last_name = form.cleaned_data['last_name']
+           password = form.cleaned_data['password']
+
+           user = User.objects.create_user(username, email)
+           user.first_name = first_name
+           user.last_name = last_name
+           user.set_password(password)
+           user.save()
+    
+    form = SignUpForm()
     return render(request, 'images/sign_up.html', {'form': form})
 
-
-
-
-
-
-'''
-    if request.method == 'POST':
-
-        form = UserForm(request.POST)
-        
-        user = form.save(commit=False)
-
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            user.set_password(password)
-            user.save()
-            user = authenticate(email=email, password=password)
-
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-
-                    user_email = user.email
-
-                    return render(request, 'images/homepage.html', {'email': user_email})
-
-            
-
-
-
-    sign_up_form = UserForm()
-    return render(request, 'images/sign_up.html', {'sign_up_form': sign_up_form} )
-'''
 
 
 
