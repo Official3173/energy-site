@@ -70,7 +70,7 @@ class ImageOverlay():
         uniq_id = str(uuid.uuid4())
 
         # Generates a unique id that is 8 digits long.
-        self.final_img_id = uniq_id[0:8]
+        self.final_img_id = uniq_id[0:8]    
         
 
         #saves image to filepath, with unique id as image name
