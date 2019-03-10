@@ -4,84 +4,74 @@ import uuid
 
 class ImageOverlay():
     
-    def __init__(self, star_rating, model_num, kwh):
+    def __init__(self, star_rating, model_num, kwh, primary, secondary):
         self.star_rating = star_rating
         self.model_num = model_num
         self.kwh = kwh
         self.final_img_id = None
+        self.primary = primary
+        self.secondary = secondary + ' water'
 
     def generate_image(self):
         '''
         Opens the correct blank template image.
         '''
 
-        if self.star_rating == '0.5':
-            self.image_template_id = '0.5 Stars Final Template'
-        
-        elif self.star_rating == '1':
-            self.image_template_id = '1 Stars Final Template'
-        
-        elif self.star_rating == '1.5':
-            self.image_template_id = '1.5 Stars Final Template'
+        # TODO
+        # - Add new 7+ energy label images
+        # - Create logic for new labels
 
-        elif self.star_rating == '2':
-            self.image_template_id = '2 Stars Final Template'
-        
-        elif self.star_rating == '2.5':
-            self.image_template_id = '2.5 Stars Final Template'
-        
-        elif self.star_rating == '3':
-            self.image_template_id = '3 Stars Final Template'
-        
-        elif self.star_rating == '3.5':
-            self.image_template_id = '3.5 Stars Final Template'
-        
-        elif self.star_rating == '4':
-            self.image_template_id = '4 Stars Final Template'
 
-        elif self.star_rating == '4.5':
-            self.image_template_id = '4.5 Stars Final Template'
-
-        elif self.star_rating == '5':
-            self.image_template_id = '5 Stars Final Template'
+        # Creates a variable holding the filename of the correct image template,
+        # based on user input. 
+        # Make sure form doesn't add a space anywhere, or this will not work!
+        self.image_template_id = self.star_rating + ' Stars Final Template'
 
         # Opens the image from the correct directory
         img = Image.open('images/static/images/Dishwasher/' + self.image_template_id + '.png')
 
         # Changed from full path to windows path - shortened version should work on Ubuntu as well
 
-
-        fnt1 = ImageFont.truetype('images/OpenSans-Regular.ttf', 42)
-
+        model_num_font = ImageFont.truetype('images/OpenSans-Regular.ttf', 42)
         kWh_font = ImageFont.truetype('images/OpenSans-Regular.ttf', 105)
+        kwh_font_small = ImageFont.truetype('images/OpenSans-SemiBold.ttf', 34)
+        primary_font = ImageFont.truetype('images/OpenSans-Regular.ttf', 30)
+        secondary_font = ImageFont.truetype('images/OpenSans-SemiBold.ttf', 33)
 
-        #replaces "<program name> used once per week"
-        fnt4 = ImageFont.truetype('images/OpenSans-Regular.ttf', 18)
-
+        # Initializes all the layers we're overlaying (I think?)
         d1 = ImageDraw.Draw(img)
         d2 = ImageDraw.Draw(img)
         d3 = ImageDraw.Draw(img)
         d4 = ImageDraw.Draw(img)
+        d5 = ImageDraw.Draw(img)
 
+        # Finds the midpoint of each piece of input text, by finding
+        # the total width and dividing by 2. This allows the image to be
+        # easily centered.
         d3_text_size = d3.textsize(self.kwh, font=kWh_font)
         d3_text_midpoint = d3_text_size[0] / 2
 
-        d1_text_size = d1.textsize(self.model_num, font=fnt1 )
+        d1_text_size = d1.textsize(self.model_num, font=model_num_font)
         d1_text_midpoint = d1_text_size[0] / 2
 
-
         # Overlays Model Number, with orange text.
-        d1.text((538 - d1_text_midpoint , 980), self.model_num,        font = fnt1, fill=(241, 92, 48))
+        d1.text((538 - d1_text_midpoint , 980), self.model_num, font = model_num_font, fill=(241, 92, 48))
         # Overlays KWH in center of image, with white color text.
-        d3.text((538 - d3_text_midpoint, 1120), self.kwh,               font = kWh_font, fill=(255, 255, 255))
+        d2.text((538 - d3_text_midpoint, 1120), self.kwh, font = kWh_font, fill=(255, 255, 255))
 
+        d3.text((505, 1557), self.kwh, font = kwh_font_small, fill=(241, 92, 48))
+
+        d4.text((470, 1300), self.primary, font = primary_font, fill=(241, 92, 48))
+
+        d5.text((671, 1518), self.secondary , font = secondary_font, fill=(241, 92, 48))
 
 
         # Generates unique ID for each image, so they don't save over each other.
         uniq_id = str(uuid.uuid4())
-        self.final_img_id = uniq_id[0:8]
-        
 
+        # Generates a unique id that is 8 digits long.
+        self.final_img_id = uniq_id[0:8]    
+        
 
         #saves image to filepath, with unique id as image name
         img.save('images/static/images/temp/' + self.final_img_id + '.png')

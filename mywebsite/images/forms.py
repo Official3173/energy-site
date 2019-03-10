@@ -14,7 +14,12 @@ IMAGE_CHOICES = [
     ('3.5', '3.5'),
     ('4', '4'),
     ('4.5', '4.5'),
-    ('5', '5'),            
+    ('5', '5'),
+]
+
+TEMP_CHOICES = [
+    ('Hot', 'Hot'),
+    ('Cold', 'Cold')
 ]
 
 class ContactForm(forms.Form):
@@ -32,10 +37,3 @@ class SignUpForm(forms.Form):
 class SignInForm(forms.Form):
      username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'form-control'}))
      password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    
-
-
-
-
-    
-    
