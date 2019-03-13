@@ -9,10 +9,11 @@ from django.contrib.auth.forms import UserCreationForm
 from PIL import Image, ImageDraw, ImageFont
 
 def index(request):
-    # if request.user.is_authenticated:
+    # Returns homepage with default greeting if user is not signed in, or
+    # personalized greeting with the users name if they are signed in.
 
     if request.user.is_authenticated:
-        greeting_message = 'Hello, ' + request.user.first_name + '.'
+        greeting_message = 'Hey, ' + request.user.first_name + '!'
         return render(request, 'images/homepage.html', {'greeting_message': greeting_message})
     else:
         return render(request, 'images/homepage.html', {'greeting_message': 'Welcome!' })
@@ -38,7 +39,6 @@ def form(request):
             img_id = image.get_unique_img_id()
 
             return render(request, 'images/answer.html', {'image': img_id } )
-
 
     contact_form = ContactForm()
     return render(request, 'images/nice_form.html', {'form': contact_form})
