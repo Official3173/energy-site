@@ -18,8 +18,8 @@ def index(request):
     else:
         return render(request, 'images/homepage.html', {'greeting_message': 'Welcome!' })
 
-def answer(request):
-    return render(request, 'images/answer.html')
+def final_image(request):
+    return render(request, 'images/final_image.html')
 
 def form(request):
 
@@ -38,7 +38,7 @@ def form(request):
 
             img_id = image.get_unique_img_id()
 
-            return render(request, 'images/answer.html', {'image': img_id } )
+            return render(request, 'images/final_image.html', {'image': img_id } )
 
     contact_form = ContactForm()
     return render(request, 'images/nice_form.html', {'form': contact_form})

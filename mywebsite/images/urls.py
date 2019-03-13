@@ -6,7 +6,7 @@ urlpatterns = [
     # all these urls are added after localhost:8000
     url(r'^$', views.index, name='index'),
 
-    url(r'^answer/$', views.answer, name='answer'),
+    url(r'^finalimage/$', views.final_image, name='final_image'),
 
     url(r'^form/$', views.form),
 
