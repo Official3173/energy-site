@@ -6,16 +6,16 @@ from .imageOverlay import ImageOverlay
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-# No comments, no fuckin problems.
-
-# Seriously though, I should document this.
-
 from PIL import Image, ImageDraw, ImageFont
 
 def index(request):
-
     # if request.user.is_authenticated:
-    return render(request, 'images/homepage.html')
+
+    if request.user.is_authenticated:
+        greeting_message = 'Hello, ' + request.user.first_name + '.'
+        return render(request, 'images/homepage.html', {'greeting_message': greeting_message})
+    else:
+        return render(request, 'images/homepage.html', {'greeting_message': 'Welcome!' })
 
 def answer(request):
     return render(request, 'images/answer.html')
@@ -65,7 +65,7 @@ def sign_in (request):
                 login(request, user)
 
                 # Redirects to the root page of the images app, which is the homepage.
-                return redirect('images')
+                return redirect('/images/')
 
             else:
                 return HttpResponse('<h1>Mission Failed!</h1>')

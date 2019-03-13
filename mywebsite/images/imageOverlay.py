@@ -15,12 +15,11 @@ class ImageOverlay():
     def generate_image(self):
         '''
         Opens the correct blank template image.
-        '''
+        ''' 
 
         # TODO
         # - Add new 7+ energy label images
         # - Create logic for new labels
-
 
         # Creates a variable holding the filename of the correct image template,
         # based on user input. 
@@ -31,7 +30,6 @@ class ImageOverlay():
         img = Image.open('images/static/images/Dishwasher/' + self.image_template_id + '.png')
 
         # Changed from full path to windows path - shortened version should work on Ubuntu as well
-
         model_num_font = ImageFont.truetype('images/OpenSans-Regular.ttf', 42)
         kWh_font = ImageFont.truetype('images/OpenSans-Regular.ttf', 105)
         kwh_font_small = ImageFont.truetype('images/OpenSans-SemiBold.ttf', 34)
@@ -58,13 +56,12 @@ class ImageOverlay():
         d1.text((538 - d1_text_midpoint , 980), self.model_num, font = model_num_font, fill=(241, 92, 48))
         # Overlays KWH in center of image, with white color text.
         d2.text((538 - d3_text_midpoint, 1120), self.kwh, font = kWh_font, fill=(255, 255, 255))
-
+        
         d3.text((505, 1557), self.kwh, font = kwh_font_small, fill=(241, 92, 48))
 
         d4.text((470, 1300), self.primary, font = primary_font, fill=(241, 92, 48))
 
         d5.text((671, 1518), self.secondary , font = secondary_font, fill=(241, 92, 48))
-
 
         # Generates unique ID for each image, so they don't save over each other.
         uniq_id = str(uuid.uuid4())
@@ -73,13 +70,13 @@ class ImageOverlay():
         self.final_img_id = uniq_id[0:8]    
         
 
-        #saves image to filepath, with unique id as image name
+        # Saves image to filepath, with unique id as image name
         img.save('images/static/images/temp/' + self.final_img_id + '.png')
 
 
     def get_unique_img_id(self):
         '''
-        Returns the unique image id.
+        Returns the unique image id..
         '''
         return self.final_img_id
 
@@ -87,5 +84,3 @@ class ImageOverlay():
 '''
 Initializes the object, and generates an image with input from parameters
 '''
-#image = ImageOverlay('1.5', 'Clothes Dryer 3000, for big loads', '366')
-#image.generate_image()
