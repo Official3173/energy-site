@@ -29,8 +29,11 @@
 
         <!-- This text is displayed differently on mac vs windows, probably due to the Bootstrap
         default being different between browsers/platforms. -->
-
-        <h1 class="text-center welcome-text-header"> {{ greeting_message }} </h1>
+        {% if user.is_authenticated %}
+        <h1 class="text-center welcome-text-header"> Hey, {{ user.first_name }}!</h1>
+        {% else %}
+        <h1 class="text-center welcome-text-header"> Hey there! </h1>
+        {% endif %}
         <h4 class="text-center welcome-text">There's gonna be an awesome website here soon.</h4>
         <h4 class="text-center lower-text">(as soon as we catch the python that's loose in the server)</h4>
     </div>

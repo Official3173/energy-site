@@ -54,8 +54,8 @@ class ImageOverlay():
         kWh_small_text_size = kWh_small.textsize(self.kwh, font=kWh_font)
         kWh_small_text_midpoint = kWh_small_text_size[0] / 2
 
-        d1_text_size = model_num.textsize(self.model_num, font=model_num_font)
-        model_num_text_midpoint = d1_text_size[0] / 2
+        model_num_text_size = model_num.textsize(self.model_num, font=model_num_font)
+        model_num_text_midpoint = model_num_text_size[0] / 2
 
         # Overlays Model Number, with orange text.
         model_num.text((538 - model_num_text_midpoint , 980), self.model_num, font = model_num_font, fill=(241, 92, 48))
@@ -70,13 +70,11 @@ class ImageOverlay():
 
         program.text((274, 1354), 'normal', font=primary_font, fill=(241, 92, 48))
 
-        
-
         # Generates unique ID for each image, so they don't save over each other.
         uniq_id = str(uuid.uuid4())
 
         # Generates a unique id that is 8 digits long.
-        self.final_img_id = uniq_id[0:8]    
+        self.final_img_id = uniq_id[0:8]
 
         # Saves image to filepath, with unique id as image name
         template_img.save('images/static/images/temp/' + self.final_img_id + '.png')
@@ -87,8 +85,3 @@ class ImageOverlay():
         Returns the unique image id..
         '''
         return self.final_img_id
-
-        
-'''
-Initializes the object, and generates an image with input from parameters
-'''
