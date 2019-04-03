@@ -7,8 +7,11 @@ When the full version is complete, this app will be able to cut down on company 
 To launch this app locally for testing/viewing purposes, here's what you need to do:
 
  1. Make sure you've activated your virtual environment if you're on Windows/MacOs.
- 2. cd to inside the 'mywebsite' directory
- 3. Run <code>python manage.py runserver</code>
+ 2. If Pillow, or PIL (the Python Image Library) is not installed, run: 
+    <code>pip install Pillow </code>
+    to install.
+ 2. cd to inside the 'mywebsite' directory.
+ 3. Run <code>python manage.py runserver</code> to launch the server.
  4. Done! The server will be live at localhost:8000/images/ .
  
  Thanks for trying Efficiency Label!
